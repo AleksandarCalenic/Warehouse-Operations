@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-sm-4">
+        <app-pagination>
+        </app-pagination>
+    </div>
+    <div class="col-sm-4">
+        <app-button>
+        </app-button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped table-primary">
+            <thead>
+              <tr>
+                <th scope="col">
+                    Date of Creation 
+                    <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'dateOfCreation'"></i>
+                    <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfCreation' && parameters.sortDirection == 'desc'"></i>
+                    <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfCreation' && parameters.sortDirection == 'asc'"></i>
+                </th>
+                <th scope="col">
+                    Date of Recording
+                    <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'dateOfRecording'"></i>
+                    <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfRecording' && parameters.sortDirection == 'desc'"></i>
+                    <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfRecording' && parameters.sortDirection == 'asc'"></i>
+                </th>
+                <th scope="col">
+                    Status
+                    <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'status'"></i>
+                    <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'status' && parameters.sortDirection == 'desc'"></i>
+                    <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'status' && parameters.sortDirection == 'asc'"></i>
+                </th>
+                <th scope="col">
+                    Transaction Type
+                    <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'transactionType'"></i>
+                    <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'transactionType' && parameters.sortDirection == 'desc'"></i>
+                    <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'transactionType' && parameters.sortDirection == 'asc'"></i>
+                </th>
+                <th scope="col">Business Partner</th>
+                <th scope="col">Business Location</th>
+                <th scope="col">Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of documentsList?.results">
+                <td>{{d.dateOfCreation | date: 'MMM d, y'}}</td>
+                <td>{{d.dateOfRecording | date: 'MMM d, y'}}</td>
+                <td>{{d.status}}</td>
+                <td>{{d.transactionType}}</td>
+                <td>{{d.businessPartner.name}}</td>
+                <td>{{d.businessPartner.address}}</td>
+                <td>{{d.year}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
