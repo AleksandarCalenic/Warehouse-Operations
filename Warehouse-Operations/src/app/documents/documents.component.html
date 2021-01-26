@@ -1,37 +1,42 @@
-<div class="row">
+<div class="row pagination">
     <div class="col-sm-4">
-        <app-pagination>
+        <app-pagination [totalItems]="documentsList?.count" [page]="parameters.page" [pageSize]="parameters.pageSize" (emiter)="getDocumentsList($event)">
         </app-pagination>
     </div>
-    <div class="col-sm-4">
-        <app-button>
-        </app-button>
+    <div class="col-sm">
+      <button class="float-right btn btn-primary" (click)="showSettings = !showSettings" *ngIf="!showSettings">
+        Open table settings
+      </button>
+      <button class="float-right btn basic" (click)="showSettings = !showSettings" *ngIf="showSettings">
+        Close table settings
+      </button>
     </div>
 </div>
+<!--Create table-->
 <div class="row">
     <div class="col-sm-12">
         <table class="table table-striped table-primary">
             <thead>
               <tr>
-                <th scope="col">
+                <th scope="col" (click)="changeSort('dateOfCreation')">
                     Date of Creation 
                     <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'dateOfCreation'"></i>
                     <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfCreation' && parameters.sortDirection == 'desc'"></i>
                     <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfCreation' && parameters.sortDirection == 'asc'"></i>
                 </th>
-                <th scope="col">
+                <th scope="col" (click)="changeSort('dateOfRecording')">
                     Date of Recording
                     <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'dateOfRecording'"></i>
                     <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfRecording' && parameters.sortDirection == 'desc'"></i>
                     <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfRecording' && parameters.sortDirection == 'asc'"></i>
                 </th>
-                <th scope="col">
+                <th scope="col" (click)="changeSort('status')">
                     Status
                     <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'status'"></i>
                     <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'status' && parameters.sortDirection == 'desc'"></i>
                     <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'status' && parameters.sortDirection == 'asc'"></i>
                 </th>
-                <th scope="col">
+                <th scope="col" (click)="changeSort('transactionType')">
                     Transaction Type
                     <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'transactionType'"></i>
                     <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'transactionType' && parameters.sortDirection == 'desc'"></i>

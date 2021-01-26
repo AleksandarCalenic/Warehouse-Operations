@@ -5,3 +5,12 @@ td, th{
 td:hover{
     background-color: rgb(98, 95, 131);
 }
+
+.pagination{
+    margin: 1% 0 1%;
+}
+
+.basic{
+    background-color: lightgray;
+}
+
