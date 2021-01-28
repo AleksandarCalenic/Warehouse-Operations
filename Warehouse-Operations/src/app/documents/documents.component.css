@@ -6,8 +6,12 @@ td:hover{
     background-color: rgb(98, 95, 131);
 }
 
-.pagination{
+.pagination, .checkbox{
     margin: 1% 0 1%;
+}
+
+.checkbox{
+    text-align: center;
 }
 
 .basic{

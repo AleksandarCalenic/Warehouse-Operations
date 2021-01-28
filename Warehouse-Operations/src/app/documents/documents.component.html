@@ -1,9 +1,9 @@
 <div class="row pagination">
-    <div class="col-sm-4">
+    <div class="col-sm-2">
         <app-pagination [totalItems]="documentsList?.count" [page]="parameters.page" [pageSize]="parameters.pageSize" (emiter)="getDocumentsList($event)">
         </app-pagination>
     </div>
-    <div class="col-sm">
+    <div class="col-sm-2">
       <button class="float-right btn btn-primary" (click)="showSettings = !showSettings" *ngIf="!showSettings">
         Open table settings
       </button>
@@ -11,6 +11,23 @@
         Close table settings
       </button>
     </div>
+    <!--Create form-->
+    <form class="col-sm-8 checkbox" *ngIf="showSettings">
+      <small>Date Of Creation </small>
+      <input type="checkbox" value="dateOfCreation" name="dateOfCreation" [(ngModel)]="showColumn.dateOfCreation">
+      <small> Date Of Recording </small>
+      <input type="checkbox" value="dateOfRecording" name="dateOfRecording" [(ngModel)]="showColumn.dateOfRecording">
+      <small> Status </small>
+      <input type="checkbox" value="status" name="status" [(ngModel)]="showColumn.status">
+      <small> Transaction Type </small>
+      <input type="checkbox" value="transactionType" name="transactionType" [(ngModel)]="showColumn.transactionType">
+      <small> Business Partner </small>
+      <input type="checkbox" value="businessPartner" name="businessPartner" [(ngModel)]="showColumn.businessPartner">
+      <small> Business Location </small>
+      <input type="checkbox" value="businessLocation" name="businessLocation" [(ngModel)]="showColumn.businessLocation">
+      <small> Year </small>
+      <input type="checkbox" value="year" name="year" [(ngModel)]="showColumn.year">
+    </form>
 </div>
 <!--Create table-->
 <div class="row">
@@ -18,44 +35,44 @@
         <table class="table table-striped table-primary">
             <thead>
               <tr>
-                <th scope="col" (click)="changeSort('dateOfCreation')">
+                <th scope="col" (click)="changeSort('dateOfCreation')" *ngIf="showColumn.dateOfCreation">
                     Date of Creation 
                     <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'dateOfCreation'"></i>
                     <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfCreation' && parameters.sortDirection == 'desc'"></i>
                     <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfCreation' && parameters.sortDirection == 'asc'"></i>
                 </th>
-                <th scope="col" (click)="changeSort('dateOfRecording')">
+                <th scope="col" (click)="changeSort('dateOfRecording')" *ngIf="showColumn.dateOfRecording">
                     Date of Recording
                     <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'dateOfRecording'"></i>
                     <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfRecording' && parameters.sortDirection == 'desc'"></i>
                     <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'dateOfRecording' && parameters.sortDirection == 'asc'"></i>
                 </th>
-                <th scope="col" (click)="changeSort('status')">
+                <th scope="col" (click)="changeSort('status')" *ngIf="showColumn.status">
                     Status
                     <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'status'"></i>
                     <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'status' && parameters.sortDirection == 'desc'"></i>
                     <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'status' && parameters.sortDirection == 'asc'"></i>
                 </th>
-                <th scope="col" (click)="changeSort('transactionType')">
+                <th scope="col" (click)="changeSort('transactionType')" *ngIf="showColumn.transactionType">
                     Transaction Type
                     <i class="fa fa-sort" aria-hidden="true" *ngIf="parameters.sort != 'transactionType'"></i>
                     <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="parameters.sort == 'transactionType' && parameters.sortDirection == 'desc'"></i>
                     <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="parameters.sort == 'transactionType' && parameters.sortDirection == 'asc'"></i>
                 </th>
-                <th scope="col">Business Partner</th>
-                <th scope="col">Business Location</th>
-                <th scope="col">Year</th>
+                <th scope="col" *ngIf="showColumn.businessPartner">Business Partner</th>
+                <th scope="col" *ngIf="showColumn.businessLocation">Business Location</th>
+                <th scope="col" *ngIf="showColumn.year">Year</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let d of documentsList?.results">
-                <td>{{d.dateOfCreation | date: 'MMM d, y'}}</td>
-                <td>{{d.dateOfRecording | date: 'MMM d, y'}}</td>
-                <td>{{d.status}}</td>
-                <td>{{d.transactionType}}</td>
-                <td>{{d.businessPartner.name}}</td>
-                <td>{{d.businessPartner.address}}</td>
-                <td>{{d.year}}</td>
+                <td *ngIf="showColumn.dateOfCreation">{{d.dateOfCreation | date: 'MMM d, y'}}</td>
+                <td *ngIf="showColumn.dateOfRecording">{{d.dateOfRecording | date: 'MMM d, y'}}</td>
+                <td *ngIf="showColumn.status">{{d.status}}</td>
+                <td *ngIf="showColumn.status">{{d.transactionType}}</td>
+                <td *ngIf="showColumn.businessPartner">{{d.businessPartner.name}}</td>
+                <td *ngIf="showColumn.businessLocation">{{d.businessPartner.address}}</td>
+                <td *ngIf="showColumn.year">{{d.year}}</td>
               </tr>
             </tbody>
           </table>

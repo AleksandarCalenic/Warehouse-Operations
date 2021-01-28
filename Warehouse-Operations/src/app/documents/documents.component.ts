@@ -14,8 +14,18 @@ export class DocumentsComponent implements OnInit {
     sort: 'dateOfCreation',
     sortDirection:'desc',
     page: 1,
-    pageSize: 10
+    pageSize: 5
   }
+
+  showColumn = {
+    "dateOfCreation": true,
+    "dateOfRecording": true,
+    "status": true,
+    "transactionType": true,
+    "businessPartner": true,
+    "businessLocation": true,
+    "year": true
+  };
 
   showSettings: boolean = false;
 
@@ -41,7 +51,7 @@ export class DocumentsComponent implements OnInit {
   changeSort(value: string){
     //checking if the col allready set as sort
     if(this.parameters.sort == value){
-      //if is, change sortDirection
+      //if it is, change sortDirection
       if(this.parameters.sortDirection == 'desc'){
         this.parameters.sortDirection = 'asc';
       } else {
