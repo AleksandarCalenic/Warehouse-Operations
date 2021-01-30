@@ -12,6 +12,8 @@ import { HomeComponent } from './core/navbar/home/home.component';
 import { AboutComponent } from './core/navbar/about/about.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { PaginationComponent } from './documents/pagination/pagination.component';
+import { DocumentComponent } from './document/document.component';
+import { PanelComponent } from './document/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { PaginationComponent } from './documents/pagination/pagination.component
     AboutComponent,
     DocumentsComponent,
     PaginationComponent,
+    DocumentComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,18 @@
+<div class="panel">
+    <div class="row">
+        <div class="col-sm">
+            <p>Transaction Type: {{document?.transactionType}}</p>
+            <p>Date of Creation: {{document?.dateOfCreation | date: 'EEEE, MMMM d, y'}}</p>
+            <p *ngIf="document?.dateOfRecording">Date of Recording: {{document?.dateOfRecording | date: 'EEEE, MMMM d, y'}}</p>
+        </div>
+        <div class="col-sm">
+            <p><u>Business Partner</u></p>
+            <p>{{document?.businessPartner.name}}</p>
+            <p>{{document?.businessPartner.city}}, {{document?.businessPartner.address}}</p>
+        </div>
+        <div class="col-sm">
+            <p>Status: {{document?.status}}</p>
+            <button class="btn btn-primary" *ngIf="!document?.dateOfRecording">Record Document</button>
+        </div>
+    </div>
+</div>

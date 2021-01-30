@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DocumentsList } from '../model/documents-list';
+import { DocumentItem } from '../model/document';
 
 const url = "http://localhost:3000/api/documents/";
 
@@ -26,6 +27,12 @@ export class DocumentsService {
     }
     return this.http.get(url, querryParms).pipe(map(x =>{
       return new DocumentsList(x);
+    }))
+  }
+
+  getDocument(id: number): Observable<DocumentItem>{
+    return this.http.get(url + id).pipe(map(x =>{
+      return new DocumentItem(x);
     }))
   }
 }

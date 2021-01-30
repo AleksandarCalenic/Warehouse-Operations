@@ -65,7 +65,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let d of documentsList?.results">
+              <tr *ngFor="let d of documentsList?.results" [routerLink]="[d._id]">
                 <td *ngIf="showColumn.dateOfCreation">{{d.dateOfCreation | date: 'MMM d, y'}}</td>
                 <td *ngIf="showColumn.dateOfRecording">{{d.dateOfRecording | date: 'MMM d, y'}}</td>
                 <td *ngIf="showColumn.status">{{d.status}}</td>

@@ -4,6 +4,7 @@ td, th{
 
 td:hover{
     background-color: rgb(98, 95, 131);
+
 }
 
 .pagination, .checkbox{
@@ -16,5 +17,9 @@ td:hover{
 
 .basic{
     background-color: lightgray;
+}
+
+tr:hover{
+    cursor: pointer;
 }
 
