@@ -1,0 +1,18 @@
+<form (submit)="pushArticle()">
+    <h4>Add new item</h4>
+    <div class="form-group">
+        <label for="article">Article</label>
+        <select id="article" class="form-control" name="article" [(ngModel)]="newItem.article">
+            <option *ngFor="let a of articles" value="{{a.code}}">{{a.name}}</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label for="article">Price</label>
+        <input type="number" class="form-control" name="price" id="price" step="0.1" [(ngModel)]="newItem.price">
+    </div>
+    <div class="form-group">
+        <label for="article">Quantity</label>
+        <input type="number" name="quantity" class="form-control" id="" step="1" [(ngModel)]="newItem.quantity">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

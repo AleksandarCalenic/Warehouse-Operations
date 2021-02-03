@@ -14,6 +14,7 @@ import { DocumentsComponent } from './documents/documents.component';
 import { PaginationComponent } from './documents/pagination/pagination.component';
 import { DocumentComponent } from './document/document.component';
 import { PanelComponent } from './document/panel/panel.component';
+import { FormComponent } from './document/form/form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PanelComponent } from './document/panel/panel.component';
     PaginationComponent,
     DocumentComponent,
     PanelComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,

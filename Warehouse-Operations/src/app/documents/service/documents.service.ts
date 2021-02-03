@@ -4,8 +4,12 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DocumentsList } from '../model/documents-list';
 import { DocumentItem } from '../model/document';
+import { ArticleItem, ArticleList } from '../model/articleList';
+import { ItemList } from '../model/itemList';
+import { Item } from '../model/item';
 
 const url = "http://localhost:3000/api/documents/";
+const articleUrl = "http://localhost:3000/api/articles";
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +36,30 @@ export class DocumentsService {
 
   getDocument(id: number): Observable<DocumentItem>{
     return this.http.get(url + id).pipe(map(x =>{
+      return new DocumentItem(x);
+    }))
+  }
+
+  getArticleList(): Observable<ArticleList>{
+    return this.http.get(articleUrl).pipe(map(x =>{
+      return new ArticleList(x);
+    }))
+  }
+
+  getItems(id:number): Observable<ItemList>{
+    return this.http.get(url + id + "/items").pipe(map(x =>{
+      return new ItemList(x);
+    }))
+  }
+
+  postArticle(item: Item): Observable<Item>{
+    return this.http.post(url + item.documents + "/items", item).pipe(map(x =>{
+      return new Item(x);
+    }))
+  }
+
+  putDocuments(document: DocumentItem): Observable<DocumentItem>{
+    return this.http.put(url + document._id, document).pipe(map(x =>{
       return new DocumentItem(x);
     }))
   }
